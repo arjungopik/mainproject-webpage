@@ -6,6 +6,35 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:user@localhost:54
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+
+
+class studentData(db.Model):
+    __tablename__ = 'studentdata'  
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    register_number = db.Column(db.String)
+    mark_scored =  db.Column(db.String)
+    assessmentid =  db.Column(db.String)
+
+
+
+
+
+class answerscriptData(db.Model):
+    __tablename__ = 'answerscripts'  
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    answer =  db.Column(db.String)
+    assessmentid =  db.Column(db.String)
+
+class assessmentData(db.Model):
+    __tablename__ = 'assessment'  
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.String)
+    answer =  db.Column(db.String)
+
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
